@@ -1,6 +1,6 @@
 //Scott Caruso
-//MuI 1206
-//Project 1 - Main JS file
+//VFW 1205
+//Project 4 - Main JS file
 
 window.addEventListener("DOMContentLoaded", function(){	   	   			   
     //Variables
