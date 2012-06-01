@@ -1,5 +1,5 @@
 //Scott Caruso
-//MuI 1206
+//MiU 1206
 //Project 1 - Main JS file
 
 window.addEventListener("DOMContentLoaded", function(){	   	   			   
