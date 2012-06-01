@@ -11,34 +11,23 @@
 html{
     background: #E8E8E8;
     font-family: Tahoma, Geneva, sans-serif;
-    font-size: 11px;
+    font-size: 14px;
 }
 
 h1 {
-    font-size: 18px;
+    text-align: center;
+    font-size: 26px;
     font-weight: bold;
     color: blue;
+    border: 1px dashed black;
+    padding: 5px;
 }
 
-div.cta {
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 0px;
-}
-
-div.search {
-    text-align: right;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 0px;
-}
-
-nav.buttons {
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 0px;
+p.mainpage {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: Tahoma, Geneva, sans-serif;
+    color: #191970;
 }
 
 span.magic {
@@ -48,9 +37,9 @@ span.magic {
 }
 
 h2 {
-    text-align: left;
+    text-align: center;
     font-family: Tahoma, Geneva, sans-serif;
-    font-size: 14px;
+    font-size: 22px;
     color: blue;
 }
 
