@@ -1,3 +1,7 @@
+//Scott Caruso
+//MiU 1206
+//Project 1 - JSON data
+
 var json = {
 	"card1": {
 		"name": ["Card Name:","Flying Warbler"],
