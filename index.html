@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <!--Scott Caruso-->
-<!--Visual Frameworks 1205-->
-<!--Project 4 - Index Page-->
+<!--Mobile Interfaces and Usability-->
+<!--Project 1 -->
+
 <html>
 	<head>
-		<title>Planeswalker's Card Binder</title>
+		<title>Planeswalker's Binder</title>
 		<meta name="description" content="A user-populated database of Magic: The Gathering cards he/she owns." />
 		<meta name="keywords" content="magic, trading card game, database, magic the gathering" />
 		<meta name="robots" content="index, follow" />
@@ -16,13 +17,30 @@
 	</head>
 	<body>
         <header>
-            <h1>Planeswalker's Binder</h1>
+            <img src="img/mainlogo.png">
+            <div class="search">
+        		<form action="" method="post" id="form">
+					<input type="text" id="searchbox" value="Scour library" size="15" />
+					<input type="button" value="Go!" id="search" />
+				</form>
+			</div>
         </header>
         <div>
-            <p class="mainpage">This application is a virtual binder that allows the user to store data about the <span class="magic">Magic: The Gathering</span> cards that he or she owns.</p>
+            <h1>Welcome, Planeswalker!</h1>
+            <section class="cta">
+            	<a href="viewlibrary.html"><img src="img/cta_viewlibrary.png"  /></a>
+            </section>
+            <p>Or, manage your spell library by choosing one of the following options:</p>
         </div>		
-        <nav class="addcard">
-            <h2><a href="additem.html">ADD A CARD</a></h2>
+        <!--OLD ADD CARD LINK <nav class="addcard">
+            <h2><a href="additem.html">ADD A CARD</a></h2> </nav>-->
+        <nav class="buttons">
+            <a href="additem.html"><img src="img/nav_1_addcard.png"  /></a>
+            <a href="browseall.html"><img src="img/nav_2_browseall.png"  /></a>
+            <a href="browsecolor.html"><img src="img/nav_3_browsecolor.png"  /></a>
+            <a href="browsetype.html"><img src="img/nav_4_browsetype.png"  /></a>
+            <a href="clearlibrary.html"><img src="img/nav_5_clearlibrary.png"  /></a>
+            <a href="debugadd.html"><img src="img/nav_6_debugadd.png"  /></a>
         </nav>
 	</body>
 </html>
