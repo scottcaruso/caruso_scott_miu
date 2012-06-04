@@ -1,6 +1,6 @@
 //Scott Caruso
-//MuI 1206
-//Project 1 - Main JS file
+//MiU 1206
+//Project 2 - Homepage JS file
 
 	//The below function gets the name of elements from the form.
 function elementName(x){

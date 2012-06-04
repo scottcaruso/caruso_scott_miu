@@ -1,6 +1,6 @@
 //Scott Caruso
-//MuI 1206
-//Project 1 - Main JS file
+//MiU 1206
+//Project 2 - Main JS file
 
 window.addEventListener("DOMContentLoaded", function(){	   	   			   
     //Variables
@@ -98,10 +98,10 @@ window.addEventListener("DOMContentLoaded", function(){
    		getCardType();
    		var card = {};
    			card.name = ["Card Name:", elementName("cardname").value];
+            card.usage = ["Currently In Use?", elementName("currentuse").value];
             card.type = ["Card Type:", typeValue];
    			card.mana = ["Mana Cost:", elementName("manacosts").value];
             card.colors = ["Colors:", cardColors];
-   			card.usage = ["Currently In Use?", elementName("currentuse").value];
    			card.notes = ["Notes:", elementName("comments").value];
    			card.date = ["Date Acquired:", elementName("dateacquired").value];
    			card.love = ["Amount of Love:", elementName("preference").value];
@@ -209,6 +209,7 @@ window.addEventListener("DOMContentLoaded", function(){
    		var cardUnstring = JSON.parse(card);
    		toggleControls("off");
    		elementName("cardname").value = cardUnstring.name[1];
+         elementName("currentuse").value = cardUnstring.usage[1];
          var type = document.forms[0].type;
          for(var i=0; i<type.length; i++){
             if(type[i].value == "Creature" && cardUnstring.type[1] == "Creature"){
@@ -232,9 +233,9 @@ window.addEventListener("DOMContentLoaded", function(){
    		elementName("manacosts").value = cardUnstring.mana[1];
    		var colors = cardUnstring.colors;
    		var namesOfColors = colors[1];
-		for(var i=0; i < namesOfColors.length; i++){
-			var colorName = namesOfColors[i];
-         elementName(colorName).setAttribute("checked", "checked");
+		   for(var i=0; i < namesOfColors.length; i++){
+			   var colorName = namesOfColors[i];
+            elementName(colorName).setAttribute("checked", "checked");
          //Commenting out below - this used to exist in Project 3, but I was challenged to 
          //find a way to condense this and make it more dynamic
          /*
@@ -257,8 +258,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				elementName("colorless").setAttribute("checked", "checked");
 			};
          */
-		};
-		elementName("currentuse").value = cardUnstring.usage[1];
+		   };
    		elementName("comments").value = cardUnstring.notes[1];
    		elementName("dateacquired").value = cardUnstring.date[1];
    		elementName("preference").value = cardUnstring.love[1];
