@@ -34,6 +34,7 @@ function fillWithJsonData(){
       if (ask){
          eraseCardData();
          fillWithJsonData();
+         return false
       };
    };
 };
