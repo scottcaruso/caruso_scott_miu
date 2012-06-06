@@ -14,17 +14,9 @@ html{
     font-size: 11px;
 }
 
-h1 {
-    font-size: 18px;
-    font-weight: bold;
-    color: blue;
-}
-
 div.cta {
     text-align: center;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 0px;
+    margin-bottom: 20px;
 }
 
 div.search {
