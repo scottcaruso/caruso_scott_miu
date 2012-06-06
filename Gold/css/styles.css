@@ -5,12 +5,14 @@
  
  Use at least 12 css properties AND style at least 8 HTML tags.
  Your CSS must not cause display or interactivity errors. This means we don't want to see unnecessary horizontal scrolling where interface components are thrown off the screen, thrown out of proper alignment, or buttons become unclickable, etc. Make sure your CSS works properly.
-
- */
+*/
 
 html{
     background: #E8E8E8;
     font-family: Tahoma, Geneva, sans-serif;
+}
+
+p{
     font-size: 11px;
 }
 
@@ -19,18 +21,8 @@ div.cta {
     margin-bottom: 20px;
 }
 
-div.search {
-    text-align: right;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 0px;
-}
-
-nav.buttons {
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 0px;
+form.search {
+    margin-bottom: 25px;
 }
 
 span.magic {
