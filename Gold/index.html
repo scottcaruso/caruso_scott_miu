@@ -43,7 +43,7 @@
 				</div> -->
 			</header>
 
-			<div data-role="content">
+			<div data-role="content" id="mainpage">
 				<p>View and manage your Magic: The Gathering card data from anywhere. Get ready for your next battle in the Planesverse!</p>
 				<div class="cta">
 					<a href="viewlibrary.html"><img src="img/cta_viewlibrary.png"></a>
@@ -55,16 +55,109 @@
 				</div>
 				<nav>
 					<ul data-role="listview" data-inset="true">
-						<li data-role="list-divider">Advanced Search</li>
+						<li data-role="list-divider">Browse by...</li>
 						</li>
-						<li><a href="#">Browse All Cards</a></li>
-						<li><a href="#">Browse Most Recent</a></li>
-						<li><a href="#">Browse By Color</a></li>
-						<li><a href="#">Browse By Category</a></li>
+						<li><a href="#">All Cards</a></li>
+						<li><a href="#">Recent</a></li>
+						<li>Color</a>
+							<ul>
+								<li>
+									<a href="browsecolor.html" id="white">
+									<img src="#" />
+									<h2>White</h2>
+									<p>Browse all white cards.</p>
+									</a>
+								</li>
+								<li>
+									<a href="browsecolor.html" id="black">
+									<img src="#" />
+									<h2>Black</h2>
+									<p>Browse all black cards.</p>
+								</a></li>
+								<li>
+									<a href="browsecolor.html" id="blue">
+									<img src="#" />
+									<h2>Blue</h2>
+									<p>Browse all blue cards.</p>
+								</a></li>
+								<li>
+									<a href="browsecolor.html" id="red">
+									<img src="#" />
+									<h2>Red</h2>
+									<p>Browse all red cards.</p>
+								</a></li>
+								<li>
+									<a href="browsecolor.html" id="green">
+									<img src="#" />
+									<h2>Green</h2>
+									<p>Browse all Green cards.</p>
+								</a></li>
+								<li>
+									<a href="browsecolor.html" id="colorless">
+									<img src="#" />
+									<h2>Colorless</h2>
+									<p>Browse all Colorless cards.</p>
+								</a></li>
+							</ul>
+						</li>
+						<li>Category</a>
+							<ul>
+								<li>
+									<a href="browsetype.html">
+									<img src="img/creature.png" />
+									<h2>Creature</h2>
+									<p>Browse all creature cards.</p>
+								</a></li>
+								<li>
+									<a href="browsetype.html">
+									<img src="img/planeswalker.png" />
+									<h2>Planeswalker</h2>
+									<p>Browse all planeswalker cards.</p>
+								</a></li>
+								<li>
+									<a href="browsetype.html">
+									<img src="img/instant.png" />
+									<h2>Instant</h2>
+									<p>Browse all instant cards.</p>
+								</a></li>
+								<li>
+									<a href="browsetype.html">
+									<img src="img/sorcery.png" />
+									<h2>Sorcery</h2>
+									<p>Browse all sorcery cards.</p>
+								</a></li>
+								<li>
+									<a href="browsetype.html">
+									<img src="img/enchantment-buff.png" />
+									<h2>Enchantment-Buff</h2>
+									<p>Browse all Buff cards.</p>
+								</a></li>
+								<li>
+									<a href="browsetype.html">
+									<img src="img/enchantment-curse.png" />
+									<h2>Enchament-Curse</h2>
+									<p>Browse all Curse cards.</p>
+								</a></li>
+								<li>
+									<a href="browsetype.html">
+									<img src="img/Artifact.png" />
+									<h2>Artifact</h2>
+									<p>Browse all Artifact cards.</p>
+								</a></li>
+								<li>
+									<a href="browsetype.html">
+									<img src="img/land.png" />
+									<h2>Land</h2>
+									<p>Browse all land cards.</p>
+								</a></li>
+							</ul>
+						</li>
 						<li data-role="list-divider">Data Functions</li>
-						<li><a href="#">Add a Card</a></li>
-						<li><a href="#">Clear Binder</a></li>
-						<li><a href="#">[DEBUG] Fill Binder</a></li>
+						<li>
+						<a href="" id="addcard">Add a Card</a>
+						</li>
+						<li data-icon="false"><a href="#" id="eraseData">Clear Binder</a></li>
+						<li data-icon="false"><a href="#" id="fillJsonData">[DEBUG] Fill Binder</a></li>
 					</ul>
 				</nav>
 

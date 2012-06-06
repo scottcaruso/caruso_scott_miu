@@ -39,8 +39,55 @@ function fillWithJsonData(){
    };
 };
 
+function displayCards(){
+         if (localStorage.length === 0){
+            var ask = confirm("There is no data in local storage. Would you like to populate it with default/dummy data?");
+            if (ask) {
+               fillWithJsonData();
+            };
+         };
+         var makeDiv = document.createElement("div");
+         makeDiv.setAttribute("id", "cards");
+         var listCardsDL = document.createElement("dl");
+         makeDiv.appendChild(listCardsDL);
+         document.body.appendChild(makeDiv);
+         for(var i=0, y=localStorage.length; i<y; i++){
+            var makedt = document.createElement("dt");
+            var editDeleteLinks = document.createElement("dd");
+            listCardsDL.appendChild(makedt);
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            var obj = JSON.parse(value);
+            var cardTitle = (obj.name[0] + " " + obj.name[1]);
+            makedt.innerHTML = cardTitle;
+            makedt.setAttribute("class", "cardtitle");
+            //makeCardTypeImage(obj.type[1],makedt);
+            var makeCardDetails = document.createElement("dd");
+            makedt.appendChild(makeCardDetails);
+            delete obj.name;
+            for(var n in obj){
+               var makeCardDetailItem = document.createElement("dd");
+               makeCardDetails.appendChild(makeCardDetailItem);
+               var cardText = (obj[n][0] + " " + obj[n][1]);
+               makeCardDetailItem.innerHTML = cardText;
+               //makeCardDetails.appendChild(editDeleteLinks);
+            };
+            //makeEditDeleteLinks(localStorage.key(i), editDeleteLinks);
+         };
+      };
+
+//Take the user to a clean Add Item page
+function addItemLink(){
+   $.mobile.changePage("additem.html");
+};
+var addItem = elementName("addcard"); 
+addItem.addEventListener("click",addItemLink);
+
+
 //Make things happen when the links are clicked.
 var clearCardData = elementName("eraseData");
 clearCardData.addEventListener("click", eraseCardData); 
 var fillData = elementName("fillJsonData");
 fillData.addEventListener("click", fillWithJsonData);
+//var showCards = elementName("white");
+//showCards.addEventListener("click", displayCards);
