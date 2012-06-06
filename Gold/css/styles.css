@@ -18,7 +18,10 @@ p{
 
 div.cta {
     text-align: center;
-    margin-bottom: 20px;
+}
+
+div.search {
+    padding-top: 15px;
 }
 
 form.search {

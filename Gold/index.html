@@ -48,13 +48,15 @@
 				<div class="cta">
 					<a href="viewlibrary.html"><img src="img/cta_viewlibrary.png"></a>
 				</div>
-				<nav>
-					<ul data-role="listview">
-						<li data-role="list-divider">Binder Search</li>
-						<li><a href="#">Quick Search Library</a></li>
-						<form action="" method="post" id="form" class="search">
-						<input type="search" name="search" id="search" value="Quick Search Library" data-mini="true" />
+				<div class="search">
+					<form action="" method="post" id="form" class="search">
+					<input type="search" name="search" id="search" value="Quick Search Library" data-mini="true" />
 					</form>
+				</div>
+				<nav>
+					<ul data-role="listview" data-inset="true">
+						<li data-role="list-divider">Advanced Search</li>
+						</li>
 						<li><a href="#">Browse All Cards</a></li>
 						<li><a href="#">Browse Most Recent</a></li>
 						<li><a href="#">Browse By Color</a></li>
@@ -65,6 +67,16 @@
 						<li><a href="#">[DEBUG] Fill Binder</a></li>
 					</ul>
 				</nav>
+
+			<div data-role="footer">
+				<div data-role="navbar">
+					<uL>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">gh-pages</a></li>
+						<li><a href="#">Bronze App</a></li>
+					</ul>
+				</div>
+			</div>
 
 		    	<script src="js/json.js" type="text/javascript"></script>
 				<script src="js/homepage.js" type="text/javascript"></script>
