@@ -90,7 +90,8 @@ window.addEventListener("DOMContentLoaded", function(){
    	//To store the data
    	function saveCard(key) {
    		if(!key){
-   			var id = Math.floor(Math.random()*3253533);
+            var y = localStorage.length;
+   			var id = y+1;
    		} else {
    			var id = key;
    		};
@@ -152,10 +153,12 @@ window.addEventListener("DOMContentLoaded", function(){
    	
    	//Autofill with Json data
    	function fillWithJsonData(){
-   		for(var x in json){
-   			var id = Math.floor(Math.random()*3253533);
-   			localStorage.setItem(id, JSON.stringify(json[x]));
-   		};
+   		var y = 1;
+         for(var x in json){
+            var id = y;
+            localStorage.setItem(id, JSON.stringify(json[x]));
+            y++;
+         };
    	};
    	
    	//creates the thumbnail image for the card type
