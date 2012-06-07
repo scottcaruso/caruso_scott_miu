@@ -11,10 +11,9 @@
 html{
     background: #E8E8E8;
     font-family: Tahoma, Geneva, sans-serif;
-    font-size: 11px;
 }
 
-h1 {
+h1.intro {
     font-size: 18px;
     font-weight: bold;
     color: blue;
@@ -47,13 +46,6 @@ span.magic {
     font-weight: bold;
 }
 
-h2 {
-    text-align: left;
-    font-family: Tahoma, Geneva, sans-serif;
-    font-size: 14px;
-    color: blue;
-}
-
 nav.addcard {
     border: 1px solid black;
     width: 145px;
@@ -82,10 +74,6 @@ dd.green {
 
 dd.gray {
     color: gray;
-}
-
-a:visited {
-    color: blue /*Maintain integrity of links. I dislike the "clicked" color.*/
 }
 
 fieldset {
