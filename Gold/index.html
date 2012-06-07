@@ -31,7 +31,7 @@
 	</head>
 	
 	<body>
-		<div data-role="page">
+		<div data-role="page" id="home">
 	        <header>
 	            <img src="img/mainlogo.png" alt="Planeswalker's Binder">
 	        <!-- Commenting out Search Box 
@@ -43,10 +43,10 @@
 				</div> -->
 			</header>
 
-			<div data-role="content" id="mainpage">
+			<div data-role="content" id="display">
 				<p>View and manage your Magic: The Gathering card data from anywhere. Get ready for your next battle in the Planesverse!</p>
 				<div class="cta">
-					<a href="viewlibrary.html"><img src="img/cta_viewlibrary.png"></a>
+					<a href="#display"><img src="img/cta_viewlibrary.png"></a>
 				</div>
 				<div class="search">
 					<input type="search" name="search" id="search" value="Enter Card Name" data-mini="true" />
@@ -144,7 +144,7 @@
 									<p>Browse all Artifact cards.</p>
 								</a></li>
 								<li>
-									<a href="browsetype.html">
+									<a href="#display">
 									<img src="img/land.png" />
 									<h2>Land</h2>
 									<p>Browse all land cards.</p>
@@ -159,6 +159,7 @@
 						<li data-icon="false"><a href="#" id="fillJsonData">[DEBUG] Fill Binder</a></li>
 					</ul>
 				</nav>
+			</div>
 
 			<div data-role="footer" data-id="mainnav">
 				<div data-role="navbar">
@@ -168,10 +169,22 @@
 					</ul>
 				</div>
 			</div>
+		</div> <!-- Main Page-->
+
+		<div data-role="page" id="display">
+
+			<div data-role="header">
+				<h1>Placeholder</h1>
+			</div>
+			<div data-role="content">
+				<p>Placeholder</p>
+			</div>
+			<div data-role="footer">
+				<p>Placeholder</p>
+			</div>
+		</div> <!-- Display Page -->
 
 		    	<script src="js/json.js" type="text/javascript"></script>
 				<script src="js/homepage.js" type="text/javascript"></script>
-			</div>
-		</div>
 	</body>
 </html>
