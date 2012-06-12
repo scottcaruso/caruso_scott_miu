@@ -16,8 +16,16 @@ p{
     font-size: 11px;
 }
 
+h2.formtext {
+    font-size: 16px;
+}
+
 div.cta {
     text-align: center;
+}
+
+div.formfield {
+    border: 0px;
 }
 
 div.search {
@@ -64,10 +72,10 @@ dd.gray {
     color: gray;
 }
 
-fieldset {
+/*fieldset {
     margin-top: 15px;
     margin-bottom: 15px;
-}
+}*/
 
 label.notes{
     vertical-align: top;

@@ -153,7 +153,7 @@
 						</li>
 						<li data-role="list-divider">Data Functions</li>
 						<li>
-						<a href="additem.html" data-ajax="false" id="addcard">Add a Card</a>
+						<a href="#addcard" id="addcard">Add a Card</a>
 						</li>
 						<li data-icon="false"><a href="#" id="eraseData">Clear Binder</a></li>
 						<li data-icon="false"><a href="#" id="fillJsonData">[DEBUG] Fill Binder</a></li>
@@ -170,6 +170,93 @@
 				</div>
 			</div>
 		</div> <!-- Main Page-->
+
+		<div data-role="page" id="addcard" data-add-back-btn="true">
+
+			<div data-role="header" data-theme="b">
+				<h1>Add New Card</h1>
+				<a href="index.html" data-icon="back">Back</a>
+			</div>
+			<div data-role="content">
+				<h2 class="formtext">Quickly add a new card to your binder with this form.</h2>
+				<p>Fields with a * are required.</p>
+				<form action="" method="post" id="addcardform">
+					<div data-role="fieldcontain" class="formfield">
+						<label for="cardname">Card Name*</label>
+						<input type="text" name="cardname" id="cardname" placeholder="Enter a card name.">
+					</div>
+					<div data-role="fieldcontain" class="formfield">
+						<label for="currentuse">Currently In Use?*</label>
+						<select id="currentuse" name ="currentuse" data-role="slider">
+							<option value="false">No</option>
+							<option value="true">Yes</option>
+						</select>
+					</div>
+					<div data-role="fieldcontain" class="formfield">
+						<label for="cardtype">Card Type*</label>
+						<select id="cardtype" name="cardtype">
+							<option value="creature">Creature</option>
+							<option value="planeswalker">Planeswalker</option>
+							<option value="instant">Instant</option>
+							<option value="sorcery">Sorcery</option>
+							<option value="buff">Enchantment - Buff</option>
+							<option value="curse">Enchantment - Curse</option>
+							<option value="artifact">Artifact</option>
+							<option value="land">Land</option>
+						</select>
+					</div>
+					<div data-role="fieldcontain" class="formfield">
+						<label for="manacost">Mana Cost*</label>
+						<input type="range" name="manacost" id="manacost" value="1" min="0" max="20"  />
+					</div>
+					<div data-role="fieldcontain" class="formfield">
+						<fieldset data-role="controlgroup">
+  							<legend>Card Color(s)*</legend>
+							<input type="checkbox" name="white" id="white" />
+							<label for="white">White</label>
+							<input type="checkbox" name="black" id="black" />
+							<label for="black">Black</label>
+							<input type="checkbox" name="blue" id="blue" />
+							<label for="blue">Blue</label>
+							<input type="checkbox" name="red" id="red" />
+							<label for="red">Red</label>
+							<input type="checkbox" name="green" id="green" />
+							<label for="green">Green</label>
+							<input type="checkbox" name="colorless" id="colorless" />
+							<label for="colorless">Colorless</label>
+						</fieldset>
+					</div>
+
+				<!-- </fieldset> -->
+					<div data-role="fieldcontain" class="formfield">
+						<label for="comments">Additional Notes</label>
+						<textarea id="comments" placeholder="Comments about this card."></textarea>
+					</div>
+					<div data-role="fieldcontain" class="formfield">
+						<label for="dateacquired">Date Acquired</label>
+						<input type="date" name="dataacquired" id="dateacquired" />
+					</div>
+					<div data-role="fieldcontain" class="formfield">
+					<div class="ui-grid-b">
+						<div class="ui-block-a">
+							<a href="#" data-role="button" id="submit" data-inline="true" data-theme="b">Submit Card</a>
+						</div>
+						<div class="ui-block-b"></div>
+						<div class="ui-block-c">
+							<a href="#" id="clear">Clear Form</a>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div data-role="footer" data-id="mainnav" data-theme="b">
+				<div data-role="navbar">
+					<uL>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="#about">About/Links</a></li>
+					</ul>
+				</div>
+			</div>
+		</div> <!-- Add Card Page -->
 
 		<div data-role="page" id="display" data-add-back-btn="true">
 
