@@ -20,8 +20,16 @@ h2.formtext {
     font-size: 16px;
 }
 
+h3 {
+    font-size: 14px;
+}
+
 div.cta {
     text-align: center;
+}
+
+div.infoclasses {
+    padding-top: 2px;
 }
 
 div.formfield {
