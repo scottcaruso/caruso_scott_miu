@@ -2,7 +2,7 @@
 //MiU 1206
 //Project 2 - Homepage JS file
 
-	//The below function gets the name of elements from the form.
+//The below function gets the name of elements from the form.
 function elementName(x){
    var elementName = document.getElementById(x);
    return elementName;              
@@ -76,6 +76,7 @@ function keywordSearch(){
 };
 
 function keywordRead(){
+   clearSearchPage();
    var getKeywords = keywordSearch();
    if (getKeywords[0] === undefined){
       alert("There are no matches for this keyword.");
@@ -121,16 +122,23 @@ function makeCardTypeImage(cardTypeName,makedt){
    makeImageLine.appendChild(makeImage);
 };
 
+function clearSearchPage(){
+   $('.displaybucket').empty();
+};
+
 function newsFeed(){
+   clearSearchPage();
    if (localStorage.length === 0){
       alert("There are no cards saved in this binder to view.");
    } else {
-      var listCardsDL = document.createElement("dl");
       var findDisplayDiv = elementName("displaybucket");
+      var listCardsDL = document.createElement("dl");
+      listCardsDL.setAttribute("id", "listcards");
       findDisplayDiv.appendChild(listCardsDL);
       for(var y=localStorage.length; y>0; y--){
          var makedt = document.createElement("dt");
-         var editDeleteLinks = document.createElement("dd");
+         makedt.setAttribute("id", "makedt");
+         //var editDeleteLinks = document.createElement("dd");
          listCardsDL.appendChild(makedt);
          var key = y;
          var value = localStorage.getItem(key);
@@ -144,6 +152,7 @@ function newsFeed(){
          delete obj.name;
          for(var n in obj){
             var makeCardDetailItem = document.createElement("dd");
+            makeCardDetailItem.setAttribute("class", "testclass");
             makeCardDetails.appendChild(makeCardDetailItem);
             var cardText = (obj[n][0] + " " + obj[n][1]);
             makeCardDetailItem.innerHTML = cardText;
@@ -151,6 +160,60 @@ function newsFeed(){
          };
       window.location="#display";
       };
+};
+
+
+//To get value from card type
+function getCardType(){
+   var buttons = document.forms[0].cardtype;
+   for(var i=0; i<buttons.length; i++){
+      if(buttons[i].selected){
+         var typeValue = buttons[i].value;
+      };
+   };
+   return typeValue
+};
+
+function saveCard() {
+   var y = localStorage.length;
+   var id = y+1;
+   var cardColors = getCardColors();
+   var cardType = getCardType();
+   var card = {};
+      card.name = ["Card Name:", elementName("cardname").value];
+      card.usage = ["Currently In Use?", elementName("currentuse").value];
+      card.type = ["Card Type:", cardType];
+      card.mana = ["Mana Cost:", elementName("manacost").value];
+      card.colors = ["Colors:", cardColors];
+      card.notes = ["Notes:", elementName("comments").value];
+      card.date = ["Date Acquired:", elementName("dateacquired").value];
+   localStorage.setItem(id, JSON.stringify(card));
+   alert(elementName("cardname").value + " has been added!");
+   window.location.reload();
+};
+
+//To get colors
+function getCardColors(){
+   var colors = [];
+   if(elementName("white").checked){
+      colors.push("white");
+   };
+   if(elementName("black").checked){
+      colors.push("black");
+   };
+   if(elementName("blue").checked){
+      colors.push("blue");
+   };
+   if(elementName("red").checked){
+      colors.push("red");
+   };
+   if(elementName("green").checked){
+      colors.push("green");
+   };    
+   if(elementName("colorless").checked){
+      colors.push("colorless");
+   }; 
+   return colors  
 };
 
 //Make things happen when the links are clicked.
@@ -162,3 +225,5 @@ var searchButtonClick = elementName("searchbutton");
 searchButtonClick.addEventListener("click", keywordRead);
 var recentClick = elementName("recentcards");
 recentClick.addEventListener("click", newsFeed);
+var saveCardData = elementName("submit");
+saveCardData.addEventListener("click", saveCard);
