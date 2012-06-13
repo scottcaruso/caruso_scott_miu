@@ -10,7 +10,7 @@ $(document).bind("pageinit", function(){
          saveCard();
       }
    });
-});
+
 
 //The below function gets the name of elements from the form.
 function elementName(x){
@@ -168,6 +168,7 @@ function newsFeed(){
             makeCardDetailItem.innerHTML = cardText;
             };
          makeEditDeleteLinks(key, editDeleteLinks);
+         makedt.appendChild(editDeleteLinks);
       };
       window.location="#display";
       };
@@ -194,7 +195,6 @@ function makeEditDeleteLinks(key, editDeleteLinks){
    deleteCardLink.addEventListener("click", eraseCard);
    deleteCardLink.innerHTML = deleteCardGuts;
    editDeleteLinks.appendChild(deleteCardLink);
-   makedt.appendChild(editDeleteLinks);
 };
 
 //To get value from card type
@@ -209,8 +209,12 @@ function getCardType(){
 };
 
 function saveCard() {
-   var y = localStorage.length;
-   var id = y+1;
+   if(elementName("submit").value != "Edit Card"){
+      var y = localStorage.length;
+      var id = y+1;
+   } else {
+      var id = elementName("submit").key;
+      };
    var cardColors = getCardColors();
    var cardType = getCardType();
    var card = {};
@@ -287,8 +291,7 @@ function editCard(){
    //saveCardData.removeEventListener("click", saveCard);
    elementName("submit").value = "Edit Card";
    var newButton = elementName("submit");
-   //newButton.addEventListener("click", validate);
-   newButton.key = this.key; 
+   newButton.key = this.key;
 };
 
 function eraseCard(){
@@ -317,3 +320,5 @@ var recentClick = elementName("recentcards");
 recentClick.addEventListener("click", newsFeed);
 //var saveCardData = elementName("submit");
 //saveCardData.addEventListener("click", saveCard);
+
+});
