@@ -99,7 +99,7 @@ function keywordRead(){
          var cardTitle = (obj.name[0] + " " + obj.name[1]);
          makedt.innerHTML = cardTitle;
          makedt.setAttribute("class", "cardtitle");
-         makeCardTypeImage(obj.type[1],makedt);
+         //makeCardTypeImage(obj.type[1],makedt);
          var makeCardDetails = document.createElement("dd");
          makedt.appendChild(makeCardDetails);
          delete obj.name;
@@ -114,13 +114,13 @@ function keywordRead(){
       };
 };
 
-function makeCardTypeImage(cardTypeName,makedt){
+/*function makeCardTypeImage(cardTypeName,makedt){
    var makeImageLine = document.createElement("dd");
    makedt.appendChild(makeImageLine);
    var makeImage = document.createElement("img");
    var imageSource = makeImage.setAttribute("src","img/" + cardTypeName + ".png");
    makeImageLine.appendChild(makeImage);
-};
+};  -- Deprecating this function, as the images in the display don't look good. These images are in use in the interface.*/
 
 function clearSearchPage(){
    $('.displaybucket').empty();
@@ -146,7 +146,7 @@ function newsFeed(){
          var cardTitle = (obj.name[0] + " " + obj.name[1]);
          makedt.innerHTML = cardTitle;
          makedt.setAttribute("class", "cardtitle");
-         makeCardTypeImage(obj.type[1],makedt);
+         //makeCardTypeImage(obj.type[1],makedt); - Depricated and removing from results.
          var makeCardDetails = document.createElement("dd");
          makedt.appendChild(makeCardDetails);
          delete obj.name;
