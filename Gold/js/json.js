@@ -1,6 +1,6 @@
 //Scott Caruso
 //MiU 1206
-//Project 2 - JSON file
+//Project 3 - JSON file
 
 var json = {
 	"card1": {

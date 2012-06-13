@@ -1,6 +1,6 @@
 //Scott Caruso
 //MiU 1206
-//Project 2 - Main JS file
+//Project 3 - Main JS file
 
 window.addEventListener("DOMContentLoaded", function(){	   	   			   
     //Variables

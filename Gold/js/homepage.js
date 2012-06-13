@@ -1,6 +1,16 @@
 //Scott Caruso
 //MiU 1206
-//Project 2 - Homepage JS file
+//Project 3 - Homepage JS file $(document).bind('pageinit')
+
+$(document).bind("pageinit", function(){
+   var form = $("#addcardform");
+   form.validate({
+      invalidHandler: function(form, validator){},
+      submitHandler: function(){
+         saveCard();
+      }
+   });
+});
 
 //The below function gets the name of elements from the form.
 function elementName(x){
@@ -138,7 +148,7 @@ function newsFeed(){
       for(var y=localStorage.length; y>0; y--){
          var makedt = document.createElement("dt");
          makedt.setAttribute("id", "makedt");
-         //var editDeleteLinks = document.createElement("dd");
+         var editDeleteLinks = document.createElement("dd");
          listCardsDL.appendChild(makedt);
          var key = y;
          var value = localStorage.getItem(key);
@@ -157,11 +167,35 @@ function newsFeed(){
             var cardText = (obj[n][0] + " " + obj[n][1]);
             makeCardDetailItem.innerHTML = cardText;
             };
-         };
+         makeEditDeleteLinks(key, editDeleteLinks);
+      };
       window.location="#display";
       };
 };
 
+
+function makeEditDeleteLinks(key, editDeleteLinks){
+   //edit link
+   var editCardLink = document.createElement("a");
+   editCardLink.href = "#addcard";
+   editCardLink.key = key;
+   editCardLink.setAttribute("class","editcard");
+   var editCardGuts = "Edit Card";
+   editCardLink.addEventListener("click", editCard);
+   editCardLink.innerHTML = editCardGuts;
+   editDeleteLinks.appendChild(editCardLink);
+   //delete link
+   var deleteCardLink = document.createElement("a");
+   deleteCardLink.href = "#";
+   deleteCardLink.key = key;
+   deleteCardLink.setAttribute("class", "deletecard");
+   deleteCardLink.setAttribute("id", "deletecard");
+   var deleteCardGuts = "Delete Card";
+   deleteCardLink.addEventListener("click", eraseCard);
+   deleteCardLink.innerHTML = deleteCardGuts;
+   editDeleteLinks.appendChild(deleteCardLink);
+   makedt.appendChild(editDeleteLinks);
+};
 
 //To get value from card type
 function getCardType(){
@@ -189,7 +223,7 @@ function saveCard() {
       card.date = ["Date Acquired:", elementName("dateacquired").value];
    localStorage.setItem(id, JSON.stringify(card));
    alert(elementName("cardname").value + " has been added!");
-   window.location.reload();
+   window.location="#home";
 };
 
 //To get colors
@@ -216,6 +250,62 @@ function getCardColors(){
    return colors  
 };
 
+function editCard(){
+   var card = localStorage.getItem(this.key);
+   var cardUnstring = JSON.parse(card);
+   elementName("cardname").value = cardUnstring.name[1];
+   elementName("currentuse").value = cardUnstring.usage[1];
+   var type = document.forms[0].cardtype;
+   for(var i=0; i<type.length; i++){
+      if(type[i].value == "Creature" && cardUnstring.type[1] == "Creature"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Planeswalker" && cardUnstring.type[1] == "Planeswalker"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Instant" && cardUnstring.type[1] == "Instant"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Sorcery" && cardUnstring.type[1] == "Sorcery"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Enchantment-Buff" && cardUnstring.type[1] == "Enchantment = Buff"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Enchantment-Curse" && cardUnstring.type[1] == "Enchantment = Curse"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Artifact" && cardUnstring.type[1] == "Artifact"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Land" && cardUnstring.type[1] == "Land"){
+         type[i].setAttribute("checked", "checked");
+      }; 
+   };    
+   elementName("manacost").value = cardUnstring.mana[1];
+   var colors = cardUnstring.colors;
+   var namesOfColors = colors[1];
+   for(var i=0; i < namesOfColors.length; i++){
+      var colorName = namesOfColors[i];
+      elementName(colorName).setAttribute("checked", "checked");
+   };
+   elementName("comments").value = cardUnstring.notes[1];
+   elementName("dateacquired").value = cardUnstring.date[1];
+   //saveCardData.removeEventListener("click", saveCard);
+   elementName("submit").value = "Edit Card";
+   var newButton = elementName("submit");
+   //newButton.addEventListener("click", validate);
+   newButton.key = this.key; 
+};
+
+function eraseCard(){
+   var cardID = localStorage.getItem(this.key);
+   var cardUnstring = JSON.parse(cardID);
+   var cardNameArray = cardUnstring.name;
+   var cardName = cardNameArray[1];
+   var ask = confirm("Are you sure you want to delete this card?");
+   if(ask){
+      localStorage.removeItem(this.key);
+      alert(cardName + " was successfully removed.");
+      window.location.reload();
+   } else {
+      alert("Don't worry! " + cardName + " was not removed.");
+   };
+};
+
 //Make things happen when the links are clicked.
 var clearCardData = elementName("eraseData");
 clearCardData.addEventListener("click", eraseCardData); 
@@ -225,5 +315,5 @@ var searchButtonClick = elementName("searchbutton");
 searchButtonClick.addEventListener("click", keywordRead);
 var recentClick = elementName("recentcards");
 recentClick.addEventListener("click", newsFeed);
-var saveCardData = elementName("submit");
-saveCardData.addEventListener("click", saveCard);
+//var saveCardData = elementName("submit");
+//saveCardData.addEventListener("click", saveCard);
