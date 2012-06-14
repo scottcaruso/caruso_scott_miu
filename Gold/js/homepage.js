@@ -224,7 +224,7 @@ function saveCard() {
       card.mana = ["Mana Cost:", elementName("manacost").value];
       card.colors = ["Colors:", cardColors];
       card.notes = ["Notes:", elementName("comments").value];
-      card.date = ["Date Acquired:", elementName("dateacquired").value];
+      card.number = ["Number Owned:", elementName("numberowned").value];
    localStorage.setItem(id, JSON.stringify(card));
    alert(elementName("cardname").value + " has been added!");
    window.location="#home";
@@ -287,7 +287,7 @@ function editCard(){
       elementName(colorName).setAttribute("checked", "checked");
    };
    elementName("comments").value = cardUnstring.notes[1];
-   elementName("dateacquired").value = cardUnstring.date[1];
+   elementName("numberowned").value = cardUnstring.number[1];
    //saveCardData.removeEventListener("click", saveCard);
    elementName("submit").value = "Edit Card";
    var newButton = elementName("submit");
