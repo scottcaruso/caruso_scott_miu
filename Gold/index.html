@@ -256,6 +256,7 @@
 						<div data-role="fieldcontain" class="formfield">
 							<fieldset data-role="controlgroup">
 	  							<legend>Card Color(s)*</legend>
+	  							<p>Please select all of the colors that are associated with this card.</p>
 								<input type="checkbox" name="cardcolor" id="white" class="required"/>
 								<label for="white">White</label>
 								<input type="checkbox" name="cardcolor" id="black" />
@@ -278,19 +279,16 @@
 							<textarea id="comments" placeholder="Comments about this card."></textarea>
 						</div>
 						<div data-role="fieldcontain" class="formfield">
-							<label for="dateacquired">Date Acquired</label>
-							<input type="date" name="dateacquired" id="dateacquired"  />
+							<label for="numberowned">Number Owned</label>
+							<input type="number" name="numberowned" id="numberowned" placeholder="1" min="1" class="required" />
 						</div>
 					</div>
-					<div data-role="fieldcontain" class="formfield">
-					<div class="ui-grid-b">
+					<div class="ui-grid-a">
 						<div class="ui-block-a">
-							<!--<a href="#" data-role="button" id="submit" data-inline="true" data-theme="b">Submit Card</a>-->
-							<input type="submit" id="submit" value="Submit Card">
+							<input type="submit" id="submit" value="Submit" data-theme="b" />
 						</div>
-						<div class="ui-block-b"></div>
-						<div class="ui-block-c">
-							<a href="#" id="clear">Clear Form</a>
+						<div class="ui-block-b">
+							<input type="button" id="clear" value="Clear" data-theme="c" />
 						</div>
 					</div>
 				</form>
