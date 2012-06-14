@@ -1,8 +1,18 @@
 //Scott Caruso
 //MiU 1206
-//Project 2 - Homepage JS file
+//Project 3 - Homepage JS file $(document).bind('pageinit')
 
-	//The below function gets the name of elements from the form.
+$(document).bind("pageinit", function(){
+   var form = $("#addcardform");
+   form.validate({
+      invalidHandler: function(form, validator){},
+      submitHandler: function(){
+         saveCard();
+      }
+   });
+
+
+//The below function gets the name of elements from the form.
 function elementName(x){
    var elementName = document.getElementById(x);
    return elementName;              
@@ -76,6 +86,7 @@ function keywordSearch(){
 };
 
 function keywordRead(){
+   clearSearchPage();
    var getKeywords = keywordSearch();
    if (getKeywords[0] === undefined){
       alert("There are no matches for this keyword.");
@@ -98,7 +109,7 @@ function keywordRead(){
          var cardTitle = (obj.name[0] + " " + obj.name[1]);
          makedt.innerHTML = cardTitle;
          makedt.setAttribute("class", "cardtitle");
-         makeCardTypeImage(obj.type[1],makedt);
+         //makeCardTypeImage(obj.type[1],makedt);
          var makeCardDetails = document.createElement("dd");
          makedt.appendChild(makeCardDetails);
          delete obj.name;
@@ -113,23 +124,30 @@ function keywordRead(){
       };
 };
 
-function makeCardTypeImage(cardTypeName,makedt){
+/*function makeCardTypeImage(cardTypeName,makedt){
    var makeImageLine = document.createElement("dd");
    makedt.appendChild(makeImageLine);
    var makeImage = document.createElement("img");
    var imageSource = makeImage.setAttribute("src","img/" + cardTypeName + ".png");
    makeImageLine.appendChild(makeImage);
+};  -- Deprecating this function, as the images in the display don't look good. These images are in use in the interface.*/
+
+function clearSearchPage(){
+   $('.displaybucket').empty();
 };
 
 function newsFeed(){
+   clearSearchPage();
    if (localStorage.length === 0){
       alert("There are no cards saved in this binder to view.");
    } else {
-      var listCardsDL = document.createElement("dl");
       var findDisplayDiv = elementName("displaybucket");
+      var listCardsDL = document.createElement("dl");
+      listCardsDL.setAttribute("id", "listcards");
       findDisplayDiv.appendChild(listCardsDL);
       for(var y=localStorage.length; y>0; y--){
          var makedt = document.createElement("dt");
+         makedt.setAttribute("id", "makedt");
          var editDeleteLinks = document.createElement("dd");
          listCardsDL.appendChild(makedt);
          var key = y;
@@ -138,19 +156,157 @@ function newsFeed(){
          var cardTitle = (obj.name[0] + " " + obj.name[1]);
          makedt.innerHTML = cardTitle;
          makedt.setAttribute("class", "cardtitle");
-         makeCardTypeImage(obj.type[1],makedt);
+         //makeCardTypeImage(obj.type[1],makedt); - Depricated and removing from results.
          var makeCardDetails = document.createElement("dd");
          makedt.appendChild(makeCardDetails);
          delete obj.name;
          for(var n in obj){
             var makeCardDetailItem = document.createElement("dd");
+            makeCardDetailItem.setAttribute("class", "testclass");
             makeCardDetails.appendChild(makeCardDetailItem);
             var cardText = (obj[n][0] + " " + obj[n][1]);
             makeCardDetailItem.innerHTML = cardText;
             };
-         };
+         makeEditDeleteLinks(key, editDeleteLinks);
+         makedt.appendChild(editDeleteLinks);
+      };
       window.location="#display";
       };
+};
+
+
+function makeEditDeleteLinks(key, editDeleteLinks){
+   //edit link
+   var editCardLink = document.createElement("a");
+   editCardLink.href = "#addcard";
+   editCardLink.key = key;
+   editCardLink.setAttribute("class","editcard");
+   var editCardGuts = "Edit Card";
+   editCardLink.addEventListener("click", editCard);
+   editCardLink.innerHTML = editCardGuts;
+   editDeleteLinks.appendChild(editCardLink);
+   //delete link
+   var deleteCardLink = document.createElement("a");
+   deleteCardLink.href = "#";
+   deleteCardLink.key = key;
+   deleteCardLink.setAttribute("class", "deletecard");
+   deleteCardLink.setAttribute("id", "deletecard");
+   var deleteCardGuts = "Delete Card";
+   deleteCardLink.addEventListener("click", eraseCard);
+   deleteCardLink.innerHTML = deleteCardGuts;
+   editDeleteLinks.appendChild(deleteCardLink);
+};
+
+//To get value from card type
+function getCardType(){
+   var buttons = document.forms[0].cardtype;
+   for(var i=0; i<buttons.length; i++){
+      if(buttons[i].selected){
+         var typeValue = buttons[i].value;
+      };
+   };
+   return typeValue
+};
+
+function saveCard() {
+   if(elementName("submit").value != "Edit Card"){
+      var y = localStorage.length;
+      var id = y+1;
+   } else {
+      var id = elementName("submit").key;
+      };
+   var cardColors = getCardColors();
+   var cardType = getCardType();
+   var card = {};
+      card.name = ["Card Name:", elementName("cardname").value];
+      card.usage = ["Currently In Use?", elementName("currentuse").value];
+      card.type = ["Card Type:", cardType];
+      card.mana = ["Mana Cost:", elementName("manacost").value];
+      card.colors = ["Colors:", cardColors];
+      card.notes = ["Notes:", elementName("comments").value];
+      card.date = ["Date Acquired:", elementName("dateacquired").value];
+   localStorage.setItem(id, JSON.stringify(card));
+   alert(elementName("cardname").value + " has been added!");
+   window.location="#home";
+};
+
+//To get colors
+function getCardColors(){
+   var colors = [];
+   if(elementName("white").checked){
+      colors.push("white");
+   };
+   if(elementName("black").checked){
+      colors.push("black");
+   };
+   if(elementName("blue").checked){
+      colors.push("blue");
+   };
+   if(elementName("red").checked){
+      colors.push("red");
+   };
+   if(elementName("green").checked){
+      colors.push("green");
+   };    
+   if(elementName("colorless").checked){
+      colors.push("colorless");
+   }; 
+   return colors  
+};
+
+function editCard(){
+   var card = localStorage.getItem(this.key);
+   var cardUnstring = JSON.parse(card);
+   elementName("cardname").value = cardUnstring.name[1];
+   elementName("currentuse").value = cardUnstring.usage[1];
+   var type = document.forms[0].cardtype;
+   for(var i=0; i<type.length; i++){
+      if(type[i].value == "Creature" && cardUnstring.type[1] == "Creature"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Planeswalker" && cardUnstring.type[1] == "Planeswalker"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Instant" && cardUnstring.type[1] == "Instant"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Sorcery" && cardUnstring.type[1] == "Sorcery"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Enchantment-Buff" && cardUnstring.type[1] == "Enchantment = Buff"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Enchantment-Curse" && cardUnstring.type[1] == "Enchantment = Curse"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Artifact" && cardUnstring.type[1] == "Artifact"){
+         type[i].setAttribute("checked", "checked");
+      } else if(type[i].value == "Land" && cardUnstring.type[1] == "Land"){
+         type[i].setAttribute("checked", "checked");
+      }; 
+   };    
+   elementName("manacost").value = cardUnstring.mana[1];
+   var colors = cardUnstring.colors;
+   var namesOfColors = colors[1];
+   for(var i=0; i < namesOfColors.length; i++){
+      var colorName = namesOfColors[i];
+      elementName(colorName).setAttribute("checked", "checked");
+   };
+   elementName("comments").value = cardUnstring.notes[1];
+   elementName("dateacquired").value = cardUnstring.date[1];
+   //saveCardData.removeEventListener("click", saveCard);
+   elementName("submit").value = "Edit Card";
+   var newButton = elementName("submit");
+   newButton.key = this.key;
+};
+
+function eraseCard(){
+   var cardID = localStorage.getItem(this.key);
+   var cardUnstring = JSON.parse(cardID);
+   var cardNameArray = cardUnstring.name;
+   var cardName = cardNameArray[1];
+   var ask = confirm("Are you sure you want to delete this card?");
+   if(ask){
+      localStorage.removeItem(this.key);
+      alert(cardName + " was successfully removed.");
+      window.location.reload();
+   } else {
+      alert("Don't worry! " + cardName + " was not removed.");
+   };
 };
 
 //Make things happen when the links are clicked.
@@ -162,3 +318,7 @@ var searchButtonClick = elementName("searchbutton");
 searchButtonClick.addEventListener("click", keywordRead);
 var recentClick = elementName("recentcards");
 recentClick.addEventListener("click", newsFeed);
+//var saveCardData = elementName("submit");
+//saveCardData.addEventListener("click", saveCard);
+
+});
