@@ -37,13 +37,13 @@
 				</div>
 				<div class="formelement">
 					<label for="cardname">Card Name </label>
-					<input type="text" id="cardname" />
+					<input type="text" id="cardname" placeholder="Please enter a name." />
 				</div>
 				<div class="formelement">
 					<label for="currentuse">Currently In Use? </label>
 					<select id="currentuse">
 						<option value="true">Yes</option>
-						<option value="false">No</option>
+						<option value="false" selected>No</option>
 					</select>
 				</div>
 				<dl>
@@ -88,11 +88,11 @@
 						</dd>
 				</dl>
 				<label for="manacost" id="manacost">Mana Cost </label>
-				<!--  commenting out, as the javascript now creates this <select id="manacost">
+				<select id="manacost">
 					<option value="0">0</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
-					<option value="3">3</option>
+					<option value="3" selected>3</option>
 					<option value="4">4</option>
 					<option value="5">5</option>
 					<option value="6">6</option>
@@ -100,7 +100,7 @@
 					<option value="8">8</option>
 					<option value="9">9</option>
 					<option value="10">10+</option>
-				</select> -->
+				</select>
 				<dl>
 					<dt id = "cardcolors">Card Color(s)</dt>
 						<dd class="white">
@@ -120,7 +120,7 @@
 							<label for="red">Red</label>	
 						</dd>
 						<dd class="green">
-							<input type="checkbox" value="Green" id="green" />
+							<input type="checkbox" checked value="Green" id="green" />
 							<label for="green">Green</label>	
 						</dd>
 						<dd class="gray">

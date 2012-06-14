@@ -62,37 +62,37 @@
 						<li><a href="#">Color</a>
 							<ul>
 								<li>
-									<a href="#display" id="white">
+									<a href="#display" id="whitemenu">
 									<img src="img/white.png" />
 									<h2>White</h2>
 									<p>Browse all white cards.</p>
 									</a></li>
 								<li>
-									<a href="#display" id="black">
+									<a href="#display" id="blackmenu">
 									<img src="img/black.png" />
 									<h2>Black</h2>
 									<p>Browse all black cards.</p>
 								</a></li>
 								<li>
-									<a href="#display" id="blue">
+									<a href="#display" id="bluemenu">
 									<img src="img/blue.png" />
 									<h2>Blue</h2>
 									<p>Browse all blue cards.</p>
 								</a></li>
 								<li>
-									<a href="#display" id="red">
+									<a href="#display" id="redmenu">
 									<img src="img/red.png" />
 									<h2>Red</h2>
 									<p>Browse all red cards.</p>
 								</a></li>
 								<li>
-									<a href="#display" id="green">
+									<a href="#display" id="greenmenu">
 									<img src="img/green.png" />
 									<h2>Green</h2>
 									<p>Browse all Green cards.</p>
 								</a></li>
 								<li>
-									<a href="#display" id="colorless">
+									<a href="#display" id="colorlessmenu">
 									<img src="img/colorless.png" />
 									<h2>Colorless</h2>
 									<p>Browse all Colorless cards.</p>
@@ -195,13 +195,14 @@
 
 		<div data-role="page" id="about" data-add-back-btn="true">
 			<div data-role="header" data-theme="b">
-				<h1>About This Application</h1>
+				<h1>About This App</h1>
 				<a href="index.html" data-icon="back">Back</a>
 			</div>
 			<div data-role="listview">
 				<li><a href="http://scottcaruso.github.com/caruso_scott_miu/Gold/index.html">gh-pages Link</a></li>
 				<li><a href="https://github.com/scottcaruso/caruso_scott_miu">Master Github Repository</a></li>
 				<li><a href="Bronze/index.html" data-ajax="false">Bronze App</a>
+				<li><a href="#knownissues">Known Bugs</a></li>
 			</div>
 			<div data-role="footer" data-id="mainnav" data-theme="b">
 				<div data-role="navbar">
@@ -212,6 +213,39 @@
 				</div>
 			</div>
 		</div> <!-- About Page -->
+
+		<div data-role="page" id="knownissues" data-add-back-btn="true">
+			<div data-role="header" data-theme="b">
+				<h1>Known Issues List</h1>
+				<a href="index.html" data-icon="back">Back</a>
+			</div>
+			<div data-role="content">
+				<div data-role="collapsible" data-theme="b">
+					<h1>View Recent After Delete Card</h1>
+					<p>The last item in Local Storage doesn't appear in Recent Cards after a card has been deleted. Need to refactor the code to go back to this id and/or re-key the existing items.</p>
+				</div></a>
+				<div data-role="collapsible" data-theme="b">
+					<h1>Edit Card Page - Slider</h1>
+					<p>When editing a card, the Mana Cost slider goes to its default of "3" rather than whatever the card's default is.</p>
+				</div></a>
+				<div data-role="collapsible" data-theme="b">
+					<h1>Viewing Edit Card after backing out of Add Card</h1>
+					<p>Going to Edit Card after using Back/Home to exit Add Card causes some elements of the form to not populate properly. This does not occur if the user Adds a card from the Add Card page.</p>
+				</div></a>
+				<div data-role="collapsible" data-theme="b">
+					<h1>Reset Form</h1>
+					<p>The Reset Form button only clears text fields for some reason. Need to investigate further to see if we can fix it.</p>
+				</div></a>
+			</div>
+			<div data-role="footer" data-id="mainnav" data-theme="b">
+				<div data-role="navbar">
+					<uL>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="#about">About/Links</a></li>
+					</ul>
+				</div>
+			</div>
+		</div> <!-- Known Bugs -->
 
 
 		<div data-role="page" id="addcard" data-add-back-btn="true">
@@ -238,20 +272,21 @@
 						</div>
 						<div data-role="fieldcontain" class="formfield">
 							<label for="cardtype">Card Type*</label>
-							<select id="cardtype" name="cardtype">
-								<option value="Creature">Creature</option>
-								<option value="Planeswalker">Planeswalker</option>
-								<option value="Instant">Instant</option>
-								<option value="Sorcery">Sorcery</option>
+							<select id="cardtype" name="cardtype" class="required">
+								<optgroup label="Please choose a cardtype">
+								<option value="Artifact">Artifact</option>
+								<option value="Creature" selected>Creature</option>
 								<option value="Enchantment-Buff">Enchantment - Buff</option>
 								<option value="Enchantment-Curse">Enchantment - Curse</option>
-								<option value="Artifact">Artifact</option>
+								<option value="Instant">Instant</option>
 								<option value="Land">Land</option>
+								<option value="Planeswalker">Planeswalker</option>
+								<option value="Sorcery">Sorcery</option>
 							</select>
 						</div>
 						<div data-role="fieldcontain" class="formfield">
 							<label for="manacost">Mana Cost*</label>
-							<input type="range" name="manacost" id="manacost" value="1" min="0" max="20"  />
+							<input type="range" name="manacost" id="manacost" value="3" min="0" max="20"  />
 						</div>
 						<div data-role="fieldcontain" class="formfield">
 							<fieldset data-role="controlgroup">
@@ -280,7 +315,7 @@
 						</div>
 						<div data-role="fieldcontain" class="formfield">
 							<label for="numberowned">Number Owned</label>
-							<input type="number" name="numberowned" id="numberowned" placeholder="1" min="1" class="required" />
+							<input type="number" name="numberowned" id="numberowned" placeholder="Please enter a number" min="1" class="required" />
 						</div>
 					</div>
 					<div class="ui-grid-a">
@@ -288,7 +323,7 @@
 							<input type="submit" id="submit" value="Submit" data-theme="b" />
 						</div>
 						<div class="ui-block-b">
-							<input type="button" id="clear" value="Clear" data-theme="c" />
+							<input type="reset" value="Reset" id="reset" data-theme="c" />
 						</div>
 					</div>
 				</form>
