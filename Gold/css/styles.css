@@ -1,7 +1,7 @@
 /*
  Scott Caruso
  MiU 1206
- Project 2 CSS - gh-pages
+ Project 3 CSS - master
  
  Use at least 12 css properties AND style at least 8 HTML tags.
  Your CSS must not cause display or interactivity errors. This means we don't want to see unnecessary horizontal scrolling where interface components are thrown off the screen, thrown out of proper alignment, or buttons become unclickable, etc. Make sure your CSS works properly.
@@ -12,12 +12,35 @@ html{
     font-family: Tahoma, Geneva, sans-serif;
 }
 
+label.error{
+    display: block;
+    margin: 10px 0;
+    color: red;
+    font-weight: bold;
+}
+
 p{
     font-size: 11px;
 }
 
+h2.formtext {
+    font-size: 16px;
+}
+
+h3 {
+    font-size: 14px;
+}
+
 div.cta {
     text-align: center;
+}
+
+div.infoclasses {
+    padding-top: 2px;
+}
+
+div.formfield {
+    border: 0px;
 }
 
 div.search {
@@ -64,10 +87,10 @@ dd.gray {
     color: gray;
 }
 
-fieldset {
+/*fieldset {
     margin-top: 15px;
     margin-bottom: 15px;
-}
+}*/
 
 label.notes{
     vertical-align: top;

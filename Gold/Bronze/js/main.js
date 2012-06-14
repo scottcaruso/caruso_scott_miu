@@ -1,12 +1,12 @@
 //Scott Caruso
 //MiU 1206
-//Project 2 - Main JS file
+//Project 3 - Main JS file
 
 window.addEventListener("DOMContentLoaded", function(){	   	   			   
     //Variables
-    var manaCosts = ["0","1","2","3","4","5","6","7","8","9","10+"];
+    //var manaCosts = ["0","1","2","3","4","5","6","7","8","9","10+"]; - removing
     var typeValue;
-    makeManaCosts();
+    //makeManaCosts();
     var errorText = elementName("errors");
 	
 	//The below function gets the name of elements from the form.
@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", function(){
          return elementName;              
     };
     
-   	//Function to create Mana Cost Drop-Down
+   	/*Function to create Mana Cost Drop-Down
    	function makeManaCosts(){
    		var findFormTag = document.getElementsByTagName("form");
    		var whereToPut = elementName("manacost");
@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", function(){
    			makeManaDropdown.appendChild(makeOption);
    		}; 
    		whereToPut.appendChild(makeManaDropdown);		
-   	};
+   	}; -- putting back into HTML */
    	
    	//To get value from card type
    	function getCardType(){
