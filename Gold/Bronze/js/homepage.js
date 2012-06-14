@@ -2,7 +2,7 @@
 //MiU 1206
 //Project 3 - Homepage JS file
 
-//The below function gets the name of elements from the form.
+	//The below function gets the name of elements from the form.
 function elementName(x){
    var elementName = document.getElementById(x);
    return elementName;              
