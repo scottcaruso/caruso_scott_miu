@@ -315,6 +315,24 @@ function editCard(){
    newButton.key = this.key;
 };
 
+function rekeyCards(){
+   var numberOfCards = localStorage.length;
+   var largestID = numberOfCards + 1;
+   var originalLargestID = largestID;
+   for (var x = largestID; 0 < x; x-- ){
+      var currentCard = localStorage.getItem(x);
+      if (currentCard == null){
+         var largestID = x;
+      };
+   };
+   for (var x = largestID; x < localStorage.length; x++){
+      var oldID = x+1;
+      var itemToRekey = localStorage.getItem(oldID);
+      localStorage.setItem(x, itemToRekey);
+   };
+   localStorage.removeItem(originalLargestID);
+};
+
 function eraseCard(){
    var cardID = localStorage.getItem(this.key);
    var cardUnstring = JSON.parse(cardID);
@@ -324,6 +342,7 @@ function eraseCard(){
    if(ask){
       localStorage.removeItem(this.key);
       alert(cardName + " was successfully removed.");
+      rekeyCards();
       window.location.reload();
    } else {
       alert("Don't worry! " + cardName + " was not removed.");
