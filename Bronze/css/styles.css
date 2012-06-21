@@ -9,8 +9,15 @@
  */
 
 html{
-    background: #E8E8E8;
     font-family: Tahoma, Geneva, sans-serif;
+}
+
+body{
+    background-image:url("img/background.png");
+}
+
+div.ui-page{
+    background-image:url("img/background.png");
 }
 
 h1.intro {

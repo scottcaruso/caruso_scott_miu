@@ -14,6 +14,7 @@ $(document).bind("pageinit", function(){
    });
 });
 
+
 function elementName(x){
    var elementName = document.getElementById(x);
    return elementName;              
@@ -191,7 +192,6 @@ function newsFeed(){
       };
 };
 
-
 function makeEditDeleteLinks(key, editDeleteLinks){
    //edit link
    var editCardLink = document.createElement("a");
@@ -297,12 +297,14 @@ function editCard(){
          type[i].setAttribute("checked", "checked");
       }; 
    };*/
-   elementName("cardtype").value = cardUnstring.type[1];  
-   elementName("manacost").value = cardUnstring.mana[1];
+   elementName("cardtype").value = cardUnstring.type[1]; 
+   //elementName("manacost").value = cardUnstring.mana[1];
+   $("#manacost").attr("value",cardUnstring.mana[1]);
    var colors = cardUnstring.colors;
    var namesOfColors = colors[1];
    for(var i=0; i < namesOfColors.length; i++){
       var colorName = namesOfColors[i];
+      $(colorName).reset;
       elementName(colorName).setAttribute("checked", "checked");
    };
    elementName("comments").value = cardUnstring.notes[1];
@@ -315,6 +317,24 @@ function editCard(){
    newButton.key = this.key;
 };
 
+function rekeyCards(){
+   var numberOfCards = localStorage.length;
+   var largestID = numberOfCards + 1;
+   var originalLargestID = largestID;
+   for (var x = largestID; 0 < x; x-- ){
+      var currentCard = localStorage.getItem(x);
+      if (currentCard == null){
+         var largestID = x;
+      };
+   };
+   for (var x = largestID; x < localStorage.length; x++){
+      var oldID = x+1;
+      var itemToRekey = localStorage.getItem(oldID);
+      localStorage.setItem(x, itemToRekey);
+   };
+   localStorage.removeItem(originalLargestID);
+};
+
 function eraseCard(){
    var cardID = localStorage.getItem(this.key);
    var cardUnstring = JSON.parse(cardID);
@@ -324,7 +344,8 @@ function eraseCard(){
    if(ask){
       localStorage.removeItem(this.key);
       alert(cardName + " was successfully removed.");
-      window.location.reload();
+      rekeyCards();
+      window.location="#home";
    } else {
       alert("Don't worry! " + cardName + " was not removed.");
    };
