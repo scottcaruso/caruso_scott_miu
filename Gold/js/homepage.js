@@ -343,7 +343,7 @@ function eraseCard(){
       localStorage.removeItem(this.key);
       alert(cardName + " was successfully removed.");
       rekeyCards();
-      window.location.reload();
+      window.location="#home";
    } else {
       alert("Don't worry! " + cardName + " was not removed.");
    };
