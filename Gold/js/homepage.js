@@ -14,6 +14,7 @@ $(document).bind("pageinit", function(){
    });
 });
 
+
 function elementName(x){
    var elementName = document.getElementById(x);
    return elementName;              
@@ -191,7 +192,6 @@ function newsFeed(){
       };
 };
 
-
 function makeEditDeleteLinks(key, editDeleteLinks){
    //edit link
    var editCardLink = document.createElement("a");
@@ -297,12 +297,14 @@ function editCard(){
          type[i].setAttribute("checked", "checked");
       }; 
    };*/
-   elementName("cardtype").value = cardUnstring.type[1];  
-   elementName("manacost").value = cardUnstring.mana[1];
+   elementName("cardtype").value = cardUnstring.type[1]; 
+   //elementName("manacost").value = cardUnstring.mana[1];
+   $("#manacost").attr("value",cardUnstring.mana[1]);
    var colors = cardUnstring.colors;
    var namesOfColors = colors[1];
    for(var i=0; i < namesOfColors.length; i++){
       var colorName = namesOfColors[i];
+      $(colorName).reset;
       elementName(colorName).setAttribute("checked", "checked");
    };
    elementName("comments").value = cardUnstring.notes[1];

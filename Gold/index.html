@@ -360,10 +360,6 @@
 			</div>
 			<div data-role="content">
 				<div data-role="collapsible" data-theme="b">
-					<h1>View Recent After Delete Card</h1>
-					<p>The last item in Local Storage doesn't appear in Recent Cards after a card has been deleted. Need to refactor the code to go back to this id and/or re-key the existing items.</p>
-				</div></a>
-				<div data-role="collapsible" data-theme="b">
 					<h1>Edit Card Page - Slider</h1>
 					<p>When editing a card, the Mana Cost slider goes to its default of "3" rather than whatever the card's default is.</p>
 				</div></a>
@@ -405,7 +401,7 @@
 						</div>
 						<div data-role="fieldcontain" class="formfield">
 							<label for="currentuse">Currently In Use?*</label>
-							<select id="currentuse" name ="currentuse" data-role="slider">
+							<select id="currentuse" name ="currentuse" data-role="slider" data-theme="b">
 								<option value="false">No</option>
 								<option value="true">Yes</option>
 							</select>
@@ -426,11 +422,11 @@
 						</div>
 						<div data-role="fieldcontain" class="formfield">
 							<label for="manacost">Mana Cost*</label>
-							<input type="range" name="manacost" id="manacost" value="3" min="0" max="20"  />
+							<input type="range" name="manacost" id="manacost" value="3" min="0" max="20" />
 						</div>
 						<div data-role="fieldcontain" class="formfield">
 							<fieldset data-role="controlgroup">
-	  							<legend>Card Color(s)*</legend>
+	  							<label for="cardcolor">Card Color(s)*</label>
 	  							<p>Please select all of the colors that are associated with this card.</p>
 								<input type="checkbox" name="cardcolor" id="white" class="required"/>
 								<label for="white">White</label>
